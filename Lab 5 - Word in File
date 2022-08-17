@@ -1,0 +1,43 @@
+//An expansion of Lab 4, this compares words on a file to the words in wordArray
+
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class Lab5 {
+        public static void main(String[] args) throws IOException{
+            String[] wordArray = {"hello", "goodbye", "cat", "dog", "red", "green", "sun", "moon"};
+            String isOrIsNot, inputWord;
+
+            //Read file input
+            BufferedReader br= new BufferedReader(new InputStreamReader(new FileInputStream(args[0])));
+            String line = br.readLine();
+            System.out.println(line);
+            
+            while (true){
+                inputWord = JOptionPane.showInputDialog(null, "Enter a word in all lower case:");
+                if(wordIsThere(inputWord, wordArray))
+                    isOrIsNot = "is";
+                else
+                    isOrIsNot= "is not";
+                JOptionPane.showMessageDialog(null, "the word " + inputWord + " " + isOrIsNot + " on the list");
+            }
+            
+        }
+        public TextFileInput (String filename, String[] array){
+        	while (i = 0; i < array.length(); i++) {}
+        	
+        }
+        public static boolean wordIsThere(String findMe, String[] theList){
+            if(findMe.equals("STOP")) System.exit(0);
+            for (int i = 0; i < 8; i++){
+                if (findMe.equals(theList[i])) return true;
+            }
+            return false;
+        }
+    
+        
+}
+
