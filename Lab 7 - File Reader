@@ -1,0 +1,68 @@
+//Prints array into a matrix, then replaces odd numbers with "*", then
+//simply reads inputs from file. 
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Lab7 {
+	public static int[][] myArray = {{1,2,3},{4,5,6},{7,8,9}};
+    public static int[][] arrayInput = new int[4][5];
+	public static void main(String[] args) throws IOException {
+		printArray(myArray);
+		printArrayEven(myArray);
+        fillArray("twodimension.txt");
+	}
+
+	private static void printArray (int[][] theArray) {
+		for (int i=0; i<theArray.length; i++) {
+			for (int j=0; j<theArray[i].length;j++)
+				display(theArray[i][j]);
+			System.out.println();
+		}
+		System.out.println();
+	}
+
+	private static void display (int num){
+		System.out.print(num+" ");
+	}
+
+	private static void printArrayEven(int[][] theArray){
+		for (int i=0; i<theArray.length; i++) {
+			for (int j=0; j<theArray[i].length;j++)
+				if (theArray[i][j] % 2 == 1){
+					System.out.print("* ");
+				}else{
+					display(theArray[i][j]);
+				}
+			System.out.println();
+		}
+		System.out.println();
+	}
+    
+	public static int[][] fillArray(String myFile) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(myFile)));
+		int row, col;
+
+		//initializing limits for nested for loop
+		String line = br.readLine();
+    	row = Integer.parseInt(line);
+    	line = br.readLine();
+   	 	col = Integer.parseInt(line);
+		
+		int[][] arrayInput = new int[row][col];
+
+		line = br.readLine();
+		for (int i = 0; i < row; i++){
+            for (int j = 0; j < col; j++){
+                arrayInput[i][j] = Integer.parseInt(line);
+				line = br.readLine();
+				System.out.println(line);
+            }
+        }
+		br.close();
+		return arrayInput;
+	} 
+    
+}
